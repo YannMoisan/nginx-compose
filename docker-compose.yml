@@ -1,0 +1,11 @@
+proxy:
+  build: proxy
+  ports:
+  - 80:80
+  links:
+  - site1
+  - site2
+site1:
+  image: ymn/site1
+site2:
+  image: ymn/site2

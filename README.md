@@ -69,6 +69,28 @@ Here is the new configuration for the proxy
 With the link, the proxy container know how to to connect to site1. In fact,
 Docker adds a host entry for site1 to the /etc/hosts of the proxy container.
 
+## Step3
+
+Command lines are now longer and it becomes painfull to run the whole things.
+Hopefully, there is a tool in the fast-growing Docker ecosystem that will help
+us : docker-compose.
+
+We just to provide a configuration file
+
+    proxy:
+      build: proxy
+      ports:
+      - 80:80
+      links:
+      - site1
+      - site2
+    site1:
+      image: ymn/site1
+    site2:
+      image: ymn/site2
+
+And we can run the whole thing with a simple command : docker-compose up
+
 # Links
 
 * http://jasonwilder.com/blog/2014/03/25/automated-nginx-reverse-proxy-for-docker/
